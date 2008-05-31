@@ -1,6 +1,7 @@
-%define		_modname	lithium
+%define		modname	lithium
 Summary:	Server-side deathmatch modification for Quake II
-Name:		quake2-mod-%{_modname}
+Summary(pl.UTF-8):	Modyfikacja trybu deathmatch po stronie serwera dla gry Quake II
+Name:		quake2-mod-%{modname}
 Version:	1.24
 Release:	0.1
 License:	?
@@ -35,6 +36,11 @@ Lithium II is a very configurable server-side deathmatch modification
 for Quake II. It adds many features and options to the game, while not
 requiring clients to download anything special.
 
+%description -l pl.UTF-8
+Lithium II to znacznie konfigurowalna modyfikacja trybu deathmatch po
+stronie serwera dla gry Quake II. Dodaje wiele możliwości i opcji do
+gry, nie wymagając ściągania niczego specjalnego przez klientów.
+
 %prep
 %setup -qcT
 %ifarch %{ix86}
@@ -46,12 +52,12 @@ requiring clients to download anything special.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_gamelibdir}/%{_modname}
+install -d $RPM_BUILD_ROOT%{_gamelibdir}/%{modname}
 cd lithium
-install game%{qarch}.so $RPM_BUILD_ROOT%{_gamelibdir}/%{_modname}
-cp -a admin.lst ctf.lst maps.lst $RPM_BUILD_ROOT%{_gamelibdir}/%{_modname}
-cp -a lithctf.cfg lithium.cfg procket.cfg stock.cfg stockctf.cfg $RPM_BUILD_ROOT%{_gamelibdir}/%{_modname}
-cp -a lithium2.qst $RPM_BUILD_ROOT%{_gamelibdir}/%{_modname}
+install game%{qarch}.so $RPM_BUILD_ROOT%{_gamelibdir}/%{modname}
+cp -a admin.lst ctf.lst maps.lst $RPM_BUILD_ROOT%{_gamelibdir}/%{modname}
+cp -a lithctf.cfg lithium.cfg procket.cfg stock.cfg stockctf.cfg $RPM_BUILD_ROOT%{_gamelibdir}/%{modname}
+cp -a lithium2.qst $RPM_BUILD_ROOT%{_gamelibdir}/%{modname}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -59,8 +65,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc lithium/*.txt
-%dir %{_gamelibdir}/%{_modname}
-%{_gamelibdir}/%{_modname}/*.lst
-%{_gamelibdir}/%{_modname}/*.cfg
-%{_gamelibdir}/%{_modname}/*.qst
-%attr(755,root,root) %{_gamelibdir}/%{_modname}/game%{qarch}.so
+%dir %{_gamelibdir}/%{modname}
+%{_gamelibdir}/%{modname}/*.lst
+%{_gamelibdir}/%{modname}/*.cfg
+%{_gamelibdir}/%{modname}/*.qst
+%attr(755,root,root) %{_gamelibdir}/%{modname}/game%{qarch}.so
